@@ -9,19 +9,15 @@ var wrongLetters = ""
 var nextLetter = ""
 var knownPositions = ""
 const possibleWords = words.concat(userWords)
-const unknownButtons = []
 
 function HandleForm(event) {
   event.preventDefault();
   var unknownWordText = document.getElementById("unknownWordText")
   var wordSize = document.getElementById("size").value;
   var idIndex = 0
-  console.log(unknownWordText)
 
   for (let i = 0; i < wordSize; i++) {
-    unknownWord += `<button id="button_${idIndex}">?</button>`
-    
-    //unknownButtons[idIndex].addEventListener('click', WrongLetter)
+    unknownWord += `<button class="guess-btn" id="button_${idIndex}">?</button>`
     knownPositions += "?"
     idIndex++
   }
@@ -37,18 +33,18 @@ function HandleForm(event) {
   unknownWordText.innerHTML = unknownWord
 
   for (let i = 0; i < wordSize; i++) {
-    unknownButtons.push(document.getElementById(`button_${idIndex}`))
-    console.log(unknownButtons)
+    document.getElementById(`button_${i}`).addEventListener('click', CorrectLetter.bind(null, i))
   }
+
+  document.getElementById("guessingPart").classList.remove("form-hidden")
+  document.getElementById("wordLength").classList.add("form-hidden")
+
   NextGuess();
 }
 
 form.addEventListener('submit', HandleForm);
 document.getElementById('noButton').addEventListener('click', WrongLetter)
-
-for(let i = 0; i < unknownButtons.length; i++) {
-  
-}
+document.getElementById('doneButton').addEventListener('click', UpdateWordList)
 
 function NextGuess() {
   let letters = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
@@ -85,7 +81,7 @@ function NextGuess() {
   nextGuessText.innerHTML = `<p>Is there an "${nextLetter}" ?`
 
   let usedLetterText = document.getElementById("usedLettersText")
-  usedLetterText.innerHTML = `<p>Used Letter: "${wrongLetters}"`
+  usedLetterText.innerHTML = `<p>Wrong Letters: "${wrongLetters}"`
 }
 
 function IndexOfMax(arr) {
@@ -103,8 +99,12 @@ function IndexOfMax(arr) {
 }
 
 function CorrectLetter(index){
-  knownPositions[index] = nextLetter
-  guessedLetters += nextLetter
+  const knownPositionsArray = knownPositions.split(''); // Convert string to array
+  knownPositionsArray[index] = nextLetter; // Modify the array
+  knownPositions = knownPositionsArray.join(''); // Convert array back to string
+  guessedLetters += nextLetter;
+  document.getElementById(`button_${index}`).innerHTML = `${nextLetter}`
+  console.log(knownPositions);
 }
 
 function WrongLetter(){
