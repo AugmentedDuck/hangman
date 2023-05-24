@@ -8,6 +8,7 @@ var guessedLetters = ""
 var wrongLetters = ""
 var nextLetter = ""
 var knownPositions = ""
+let lives = 5
 const possibleWords = words.concat(userWords)
 
 function HandleForm(event) {
@@ -27,8 +28,6 @@ function HandleForm(event) {
       possibleWords.splice(i, 1);
     }
   }
-
-  console.log(possibleWords)
 
   unknownWordText.innerHTML = unknownWord
 
@@ -67,7 +66,6 @@ function NextGuess() {
 
   function dataSorter(arr) {
     let indexOfNextLetter = IndexOfMax(arr);
-    console.log(arr)
     nextLetter = String.fromCharCode(97 + indexOfNextLetter);
     for(let i = 0; i < guessedLetters.length; i++){
       if (guessedLetters[i] == nextLetter) {
@@ -104,15 +102,19 @@ function CorrectLetter(index){
   knownPositions = knownPositionsArray.join(''); // Convert array back to string
   guessedLetters += nextLetter;
   document.getElementById(`button_${index}`).innerHTML = `${nextLetter}`
-  console.log(knownPositions);
 }
 
 function WrongLetter(){
   guessedLetters += nextLetter;
   wrongLetters += nextLetter;
 
-  console.log(wrongLetters)
-  UpdateWordList();
+  lives--;
+  let nextGuessText = document.getElementById("guess")
+  nextGuessText.innerHTML = `<p>I LOST :(`
+
+  if(lives > 0) {
+    UpdateWordList();
+  }
 }
 
 function UpdateWordList() {
@@ -135,12 +137,10 @@ function UpdateWordList() {
       index++
     }
   }
-  console.log(spliceIndex)
 
   for (let i = spliceIndex.length - 1; i >= 0; i--) {
     possibleWords.splice(spliceIndex[i], 1)
   }
 
-  console.log(possibleWords);
   NextGuess();
 }
