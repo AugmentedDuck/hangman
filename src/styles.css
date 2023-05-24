@@ -114,3 +114,14 @@ html, body {
 .guess-btn:active {
   transform: scale(.95);
 }
+
+.guessedWord {
+  vertical-align: middle;
+  padding: .67em;
+  margin: 1em .1em;
+  border: 0;
+  border-radius: 10em;
+  background-color: var(--background-color);
+  font-weight: bold;
+  font-size: 1.5em;
+}
