@@ -11,13 +11,25 @@
       </header>
 
       <section class="container">
-        <h2 class="section-header">The Game</h2>
+        <h2 class="section-header">Guess the word</h2>
+        <div>
+          <p id="theWordHints" class="guessedWord"></p>
+          <span id="wrongLetters"><p>Wrong letters:</p></span>
+        </div>
+        
+        <form id="guessingForm">
+          <input class="form-input" type="text" id="letterInput" required placeholder="Guess a letter" maxlength="1">
+          <button class="btn" type="submit">Submit</button>
+        </form>
+
+
+        <script src="./src/hangmanGuesser.js" type="module"></script>
       </section>
 
-      <section>
-        <button type="button" onclick="location.href = './index.html'">Back</button>
+      <footer>
+        <button class="btn" type="button" onclick="location.href = './index.html'">Back</button>
+        <button class="btn" type="button" onclick="location.href = './executioner.html'">Restart</button>
+      </footer>
         
-        <script src="./src/hangmanGuesser.js"></script>
-      </section>
     </body>
 </html>
