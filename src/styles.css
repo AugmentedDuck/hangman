@@ -1,0 +1,116 @@
+:root {
+  --text-color: #0b0727;
+  --background-color: #dcd8f8;
+  --primary-color: #4e1570;
+  --secondary-color: #fae5f7;
+  --accent-color: #1a0517;
+}
+
+* {
+  box-sizing: border-box;
+  color: var(--text-color);
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial;
+  background-color: var(--background-color);
+}
+
+.web-title {
+  text-align: center;
+  margin: 0;
+  padding: .25em 0;
+  font-size: 4em;
+  font-weight: bold;
+}
+
+.container {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 0 1.5em;
+  box-shadow: 0 0 40px rgba(0, 0, 0, .2);
+  border-radius: 1em;
+  background-color: var(--secondary-color);
+  text-align: center;
+}
+
+.section-header {
+  font-size: 2em;
+  padding-top: .5em;
+  font-weight: bold;
+}
+
+.btn {
+  vertical-align: middle;
+  padding: .67em;
+  margin: 1em 0;
+  cursor: pointer;
+  border: 0;
+  border-radius: .5em;
+  background-color: var(--primary-color);
+  color: var(--secondary-color);
+  transition: .2s;
+}
+
+.btn:hover {
+  background-color: var(--accent-color);
+  padding: .77em;
+}
+
+.btn:active {
+  transform: scale(.95);
+}
+
+.form-hidden {
+  display: none;
+}
+
+.form-input {
+  display: block;
+  width: 100%;
+  padding: .75rem;
+  border-radius: 4em;
+  border: 1px solid var(--accent-color);
+  outline: none;
+  background: var(--background-color);
+  transition: .2s;
+}
+
+.form-input:focus {
+  border-color: var(--primary-color);
+  background: var(--secondary-color);
+}
+
+.unknownWords {
+  vertical-align: middle;
+  padding: .67em;
+  margin: 1em 0;
+  border: 0;
+  border-radius: 10em;
+  background-color: var(--background-color);
+  color: var(--secondary-color);
+  transition: .2s;
+}
+
+.guess-btn {
+  font-size: 1.25em;
+  font-weight: bold;
+  vertical-align: middle;
+  padding: .67em;
+  margin: 1em .1em;
+  cursor: pointer;
+  border: 0;
+  border-radius: .5em;
+  background-color: var(--secondary-color);
+  transition: .2s;
+}
+
+.guess-btn:hover {
+  padding: .77em;
+}
+
+.guess-btn:active {
+  transform: scale(.95);
+}

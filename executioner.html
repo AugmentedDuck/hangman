@@ -7,21 +7,26 @@
     </head>
     <body>
       <header>
-        <h1>Hangman Executioner</h1>
+        <h1 class="web-title">Hangman Executioner</h1>
       </header>
       
-      <section>
-        <h2>The Game</h2>
-        <div id="guess"><p>Is there an _ ?</p></div>
-        <div>
-          <button id="noButton">No</button>
+      <section class="container">
+        <h2 class="section-header">The Game</h2>
+        
+        <div class="form-hidden" id="guessingPart">
+          <div id="guess"><p>Is there an _ ?</p></div>
+          <div class="unknownWords" id="unknownWordText"></div>
+          <div>
+            <button class="btn" id="doneButton">Done placing letters</button>
+            <button class="btn" id="noButton">No</button>
+          </div>
+          <div id="usedLettersText"><p>Wrong Letters:</p></div>
         </div>
-        <div><p>The Word: </p></div>
-        <div id="unknownWordText"></div>
-        <div id="usedLettersText"><p>Used Letters:</p></div>
+        
+        
         <form id="wordLength">
-          <input type="number" id="size" required placeholder="How long is the word">
-          <div><button type="submit">Submit</button></div>
+          <input class="form-input" type="number" id="size" required placeholder="How long is the word">
+          <div><button class="btn" type="submit">Submit</button></div>
         </form>
 
 
@@ -30,7 +35,8 @@
       </section>
 
       <footer>
-        <button type="button" onclick="location.href = './index.html'">Back</button>
+        <button class="btn" type="button" onclick="location.href = './index.html'">Back</button>
+        <button class="btn" type="button" onclick="location.href = './executioner.html'">Restart</button>
       </footer>
     </body>
 </html>
